@@ -43,3 +43,9 @@ spec:
         rules:
           name: rules
           title: Rules
+    runtime:
+    outputs:
+      firewall_rules:
+        visibility: VISIBILITY_ROOT
+      firewall_rules_ingress_egress:
+        visibility: VISIBILITY_ROOT
