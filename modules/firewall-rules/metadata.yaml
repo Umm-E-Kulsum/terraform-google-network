@@ -22,7 +22,7 @@ spec:
   info:
     title: Google Cloud VPC Firewall Rules
     source:
-      repo: https://github.com/terraform-google-modules/terraform-google-network.git
+      repo: https://github.com/Umm-E-Kulsum/terraform-google-network.git
       sourceType: git
       dir: /modules/firewall-rules
     version: 16.1.0
@@ -197,6 +197,25 @@ spec:
             spec:
               outputExpr: "[external_ip]"
               inputPath: source_ranges
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-vm/tree/main/modules/compute_instance
+              version: ">= 15.0.0"
+            spec:
+              outputExpr: service_account_email
+              inputPath: target_service_accounts
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-vm/tree/main/modules/instance_template
+              version: ">= 15.0.0"
+            spec:
+              outputExpr: service_account_info.email
+              inputPath: target_service_accounts
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-sql-db//modules/postgresql
+              version: ">= 25.2.2"
+            spec:
+              outputExpr: private_ip_address
+              inputPath: source_ranges
+
       - name: egress_rules
         description: List of egress rules. This will be ignored if variable 'rules' is non-empty
         varType: |-
